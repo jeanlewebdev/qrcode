@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ImageController!{% endblock %}
+
+{% block body %}
+
+
+    {% if product.images %}
+    <div class="d-flex">
+
+
+        {% for image in product.images %}
+
+            <img width="200px" src="{{ vich_uploader_asset(image) }}" alt="" class="m-3 p-3">
+
+        {% endfor %}
+    </div>
+    {%  endif %}
+
+    <hr>
+
+    {{ form_start(form, {attr:{action:path('app_add_image', {id:product.id})}}) }}    {{ form_widget(form.imageFile) }}
+    <button class="btn btn-success" type="submit">send</button>
+    {{ form_end(form) }}
+
+
+
+{% endblock %}
